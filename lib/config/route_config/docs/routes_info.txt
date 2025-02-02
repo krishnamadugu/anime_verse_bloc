@@ -1,0 +1,11 @@
+knowledge about go router ::::
+https://medium.com/@vimehraa29/flutter-go-router-the-crucial-guide-41dc615045bb
+
+files info ::::
+
+route_handler : used to handle named routing functionality with the help of go router
+route_names : had all the names of routes used in app
+
+additional_folder ::: had miscellaneous features required for routing
+observers : will listen to push & pop events and updates current state
+transitions : helps to add effects while moving from one screen to other

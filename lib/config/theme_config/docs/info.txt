@@ -1,0 +1,14 @@
+knowledge themes :::
+https://docs.flutter.dev/cookbook/design/themes
+
+files info :::
+
+types :: contains types of theme and there config info
+light_theme : light theme config
+dark_theme : dark theme config
+
+ui_theme :: contains all the theme config related to ui individually
+
+app_theme_config : contains app theme info which will be assigned to material app
+theme_switcher : contains functionality to choose in between dark &  light
+
