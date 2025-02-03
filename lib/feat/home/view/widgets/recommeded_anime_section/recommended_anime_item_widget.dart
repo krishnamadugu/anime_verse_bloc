@@ -9,10 +9,18 @@ class RecommendedAnimeItemWidget extends StatelessWidget {
     super.key,
     required this.screenSize,
     required this.txtTheme,
+    required this.cardTitle,
+    required this.cardSubTitle,
+    required this.cardDescription,
+    required this.imgUrl,
   });
 
   final Size screenSize;
   final TextTheme txtTheme;
+  final String cardTitle;
+  final String cardSubTitle;
+  final String cardDescription;
+  final String imgUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +48,7 @@ class RecommendedAnimeItemWidget extends StatelessWidget {
                   flex: 1,
                   child: LeadingCardWidget(
                     screenSize: screenSize,
+                    imgUrl: imgUrl,
                   ),
                 ),
 
@@ -51,6 +60,9 @@ class RecommendedAnimeItemWidget extends StatelessWidget {
                     child: BodyCardWidget(
                       screenSize: screenSize,
                       txtTheme: txtTheme,
+                      cardTitle: cardTitle,
+                      cardSubTitle: cardSubTitle,
+                      cardDescription: cardDescription,
                     ),
                   ),
                 ),

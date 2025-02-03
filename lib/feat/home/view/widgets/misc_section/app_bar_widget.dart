@@ -16,7 +16,7 @@ AppBar buildAppBarWidget(
     title: ConstrainedBox(
       constraints: appBarDefConstraints,
       child: TextWidget(
-        txtVal: AppTexts.kHomeAppBarTitle,
+        txtVal: AppTexts.kAppTitle,
         textStyle: txtTheme.titleMedium?.copyWith(
           wordSpacing: 1.2,
           fontWeight: FontWeight.w600,

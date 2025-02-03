@@ -9,14 +9,16 @@ class LeadingCardWidget extends StatelessWidget {
   const LeadingCardWidget({
     super.key,
     required this.screenSize,
+    required this.imgUrl,
   });
 
   final Size screenSize;
+  final String imgUrl;
 
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: "https://shorturl.at/75jev",
+      imageUrl: imgUrl,
       imageBuilder: (context, imageProvider) => CacheImgBuilder(
         imageProvider: imageProvider,
         heightVal: screenSize.height * 0.15,

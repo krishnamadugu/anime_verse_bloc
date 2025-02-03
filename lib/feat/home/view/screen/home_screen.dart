@@ -1,4 +1,8 @@
+import 'package:anime_verse/feat/home/view_model/anime_suggestion_view_model/anime_suggestion_bloc.dart';
+import 'package:anime_verse/feat/home/view_model/genre_view_model/genre_bloc.dart';
+import 'package:anime_verse/feat/home/view_model/top_rated_view_model/top_rated_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../widgets/genre_section/genre_section_widget.dart';
 import '../widgets/misc_section/app_bar_widget.dart';
@@ -35,26 +39,44 @@ class HomeScreen extends StatelessWidget {
         physics: AlwaysScrollableScrollPhysics(),
         children: [
           /// top rated anime section
-          ConstrainedBox(
-            constraints: defaultConstraints,
-            child: TopRatedAnimeSection(
-              screenSize: screenSize,
-              txtTheme: txtTheme,
-            ),
+          BlocBuilder<TopRatedBloc, TopRatedState>(
+            builder: (context, state) {
+              return state.status!.isError || state.status!.isException
+                  ? const SizedBox.shrink()
+                  : ConstrainedBox(
+                      constraints: defaultConstraints,
+                      child: TopRatedAnimeSection(
+                        screenSize: screenSize,
+                        txtTheme: txtTheme,
+                      ),
+                    );
+            },
           ),
 
           /// genre section
-          GenreSectionWidget(
-            screenSize: screenSize,
-            txtTheme: txtTheme,
+          BlocBuilder<GenreBloc, GenreState>(
+            builder: (context, state) {
+              return state.status.isError
+                  ? const SizedBox.shrink()
+                  : GenreSectionWidget(
+                      screenSize: screenSize,
+                      txtTheme: txtTheme,
+                    );
+            },
           ),
 
           const SizedBox(height: 20.0),
 
           /// recommended anime section
-          RecommendedAnimeSectionWidget(
-            screenSize: screenSize,
-            txtTheme: txtTheme,
+          BlocBuilder<AnimeSuggestionBloc, AnimeSuggestionState>(
+            builder: (context, state) {
+              return state.status.isError
+                  ? const SizedBox.shrink()
+                  : RecommendedAnimeSectionWidget(
+                      screenSize: screenSize,
+                      txtTheme: txtTheme,
+                    );
+            },
           ),
         ],
       ),

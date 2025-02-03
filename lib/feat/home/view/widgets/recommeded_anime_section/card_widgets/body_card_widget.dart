@@ -7,10 +7,16 @@ class BodyCardWidget extends StatelessWidget {
     super.key,
     required this.screenSize,
     required this.txtTheme,
+    required this.cardTitle,
+    required this.cardSubTitle,
+    required this.cardDescription,
   });
 
   final Size screenSize;
   final TextTheme txtTheme;
+  final String cardTitle;
+  final String cardSubTitle;
+  final String cardDescription;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +32,7 @@ class BodyCardWidget extends StatelessWidget {
             maxWidth: screenSize.width * 0.5,
           ),
           child: TextWidget(
-            txtVal: "One Piece",
+            txtVal: cardTitle,
             textStyle: txtTheme.labelLarge,
           ),
         ),
@@ -37,7 +43,7 @@ class BodyCardWidget extends StatelessWidget {
             maxWidth: screenSize.width * 0.6,
           ),
           child: TextWidget(
-            txtVal: "12 Episodes (Finished Airing)",
+            txtVal: cardSubTitle,
             textStyle: txtTheme.labelMedium,
           ),
         ),
@@ -52,8 +58,7 @@ class BodyCardWidget extends StatelessWidget {
             ),
             child: SingleChildScrollView(
               child: TextWidget(
-                txtVal:
-                    "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+                txtVal: cardDescription,
                 textStyle: txtTheme.labelSmall,
                 maxLines: 5,
               ),
