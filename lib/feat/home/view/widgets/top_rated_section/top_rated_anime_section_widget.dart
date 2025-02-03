@@ -1,5 +1,7 @@
 import 'package:anime_verse/feat/home/view/widgets/top_rated_section/top_rated_anime_item_widget.dart';
+import 'package:anime_verse/feat/home/view_model/top_rated_view_model/top_rated_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/constants/app_constants/ui_constants/text_values.dart';
@@ -17,6 +19,8 @@ class TopRatedAnimeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final topRatedBloc = context.read<TopRatedBloc>();
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,19 +44,47 @@ class TopRatedAnimeSection extends StatelessWidget {
             maxHeight: screenSize.height * 0.23,
             maxWidth: screenSize.width,
           ),
-          child: Skeletonizer(
-            enabled: false,
-            child: ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (BuildContext context, int index) {
-                return TopRatedAnimeItemWidget(
-                  screenSize: screenSize,
-                  txtTheme: txtTheme,
-                );
-              },
-            ),
+          child: BlocBuilder<TopRatedBloc, TopRatedState>(
+            bloc: topRatedBloc,
+            builder: (context, state) {
+              /// both loading and initial case shimmer widget will be displayed
+              return state.status!.isLoading || state.status!.isInitial
+                  ? Skeletonizer(
+                      enabled: true,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 10,
+                        itemBuilder: (BuildContext context, int index) {
+                          return TopRatedAnimeItemWidget(
+                            screenSize: screenSize,
+                            txtTheme: txtTheme,
+                            imgUrl: 'https://shorturl.at/75jev',
+                            name: 'One Piece',
+                          );
+                        },
+                      ),
+                    )
+
+                  /// on state is success this field is shown
+                  : Skeletonizer(
+                      enabled: false,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: state.ratedAnimeList?.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          var item = state.ratedAnimeList?[index];
+                          return TopRatedAnimeItemWidget(
+                            screenSize: screenSize,
+                            txtTheme: txtTheme,
+                            imgUrl: item?.image ?? "",
+                            name: item?.title ?? "",
+                          );
+                        },
+                      ),
+                    );
+            },
           ),
         ),
       ],

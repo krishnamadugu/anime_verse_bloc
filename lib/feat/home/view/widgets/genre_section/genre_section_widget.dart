@@ -43,8 +43,7 @@ class GenreSectionWidget extends StatelessWidget {
           bloc: genreBloc,
           builder: (BuildContext context, GenreState state) {
             return Skeletonizer(
-              enabled: state.status == GenreStatus.loading ||
-                  state.status == GenreStatus.initial,
+              enabled: state.status.isLoading || state.status.isInitial,
               ignoreContainers: true,
               child: ConstrainedBox(
                 constraints: BoxConstraints(
@@ -53,8 +52,7 @@ class GenreSectionWidget extends StatelessWidget {
                 ),
 
                 /// loading & success state condition widgets
-                child: state.status == GenreStatus.loading ||
-                        state.status == GenreStatus.initial
+                child: state.status.isLoading || state.status.isInitial
                     ? ListView.builder(
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,

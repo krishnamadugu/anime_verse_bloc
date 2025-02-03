@@ -11,10 +11,14 @@ class TopRatedAnimeItemWidget extends StatelessWidget {
     super.key,
     required this.screenSize,
     required this.txtTheme,
+    required this.imgUrl,
+    required this.name,
   });
 
   final Size screenSize;
   final TextTheme txtTheme;
+  final String imgUrl;
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +30,16 @@ class TopRatedAnimeItemWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         spacing: 6.0,
         children: [
-          Expanded(
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: screenSize.width * 0.27,
+              maxHeight: screenSize.height * 0.2,
+            ),
             child: CachedNetworkImage(
-              imageUrl: "https://shorturl.at/75jev",
+              imageUrl: imgUrl,
               imageBuilder: (context, imageProvider) => CacheImgBuilder(
                 imageProvider: imageProvider,
-                heightVal: screenSize.height * 0.18,
+                heightVal: screenSize.height * 0.2,
                 widthVal: screenSize.width * 0.27,
                 borderRadiusVal: 6.0,
               ),
@@ -43,9 +51,14 @@ class TopRatedAnimeItemWidget extends StatelessWidget {
               errorWidget: (context, url, error) => NoImgFoundWidget(),
             ),
           ),
-          TextWidget(
-            txtVal: "One Piece",
-            textStyle: txtTheme.labelMedium,
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: screenSize.width * 0.28,
+            ),
+            child: TextWidget(
+              txtVal: name,
+              textStyle: txtTheme.labelMedium,
+            ),
           ),
         ],
       ),
