@@ -6,4 +6,5 @@ class RouteNames {
   static String searchScreen = "/searchScreen";
   static String exceptionScreen = "/exceptionScreen";
   static String errorScreen = "/errorScreen";
+  static String noInternetScreen = "/noInternetScreen";
 }

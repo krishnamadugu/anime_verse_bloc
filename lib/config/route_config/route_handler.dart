@@ -1,3 +1,4 @@
+import 'package:anime_verse/feat/misc/no_network/view/screen/view_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
@@ -55,6 +56,14 @@ class RouteHandler {
             path: RouteNames.exceptionScreen,
             builder: (BuildContext context, GoRouterState state) {
               return ExceptionScreen();
+            },
+          ),
+
+          /// no Internet screen
+          GoRoute(
+            path: RouteNames.noInternetScreen,
+            builder: (BuildContext context, GoRouterState state) {
+              return NoInternetScreen();
             },
           ),
         ],

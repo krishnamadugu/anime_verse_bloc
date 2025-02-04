@@ -6,6 +6,10 @@ class AppAssetPaths {
       "assets/lotties/misc_module/error_lottie.json";
   static const String kExceptionLottiePath =
       "assets/lotties/misc_module/exception_lottie.json";
+  static const String kNoInternetAssetPath =
+      "assets/lotties/misc_module/no_internet_lottie.json";
+
+  /// image file paths
   static const String kNoImgFoundAssetPath =
       "assets/images/misc/imgNotFound.png";
 }

@@ -15,6 +15,7 @@ import 'feat/home/data/ranking/repos/ranking_repo_provider.dart';
 import 'feat/home/view_model/anime_suggestion_view_model/anime_suggestion_bloc.dart';
 import 'feat/home/view_model/genre_view_model/genre_bloc.dart';
 import 'feat/home/view_model/top_rated_view_model/top_rated_bloc.dart';
+import 'feat/misc/no_network/view_model/no_network_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -70,6 +71,12 @@ class MyApp extends StatelessWidget {
             create: (BuildContext context) => GenreBloc(
               genreRepoProvider: context.read<GenreRepoProvider>(),
             )..add(OnGenreFetchDataEvent()),
+          ),
+
+          /// creating genre bloc provider & adding fetch genre event
+          BlocProvider<NoNetworkBloc>(
+            create: (BuildContext context) =>
+                NoNetworkBloc()..add(NoNetworkObserve()),
           ),
 
           /// creating anime suggestion bloc provider & adding fetch anime suggestion event
