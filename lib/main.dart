@@ -1,3 +1,4 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -87,17 +88,27 @@ class MyApp extends StatelessWidget {
             )..add(OnAnimeSuggestionsFetchDataEvent()),
           ),
         ],
-        child: MaterialApp.router(
-          debugShowCheckedModeBanner: false,
+        child: DynamicColorBuilder(
+            builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
+          AppThemeConfig.lightTheme.copyWith(
+            colorScheme: lightDynamic,
+          );
 
-          /// theme and title properties
-          title: AppTexts.kAppTitle,
-          theme: AppThemeConfig.lightTheme,
-          darkTheme: AppThemeConfig.darkTheme,
+          AppThemeConfig.darkTheme.copyWith(
+            colorScheme: darkDynamic,
+          );
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
 
-          /// router properties
-          routerConfig: RouteHandler.router,
-        ),
+            /// theme and title properties
+            title: AppTexts.kAppTitle,
+            theme: AppThemeConfig.lightTheme,
+            darkTheme: AppThemeConfig.darkTheme,
+
+            /// router properties
+            routerConfig: RouteHandler.router,
+          );
+        }),
       ),
     );
   }

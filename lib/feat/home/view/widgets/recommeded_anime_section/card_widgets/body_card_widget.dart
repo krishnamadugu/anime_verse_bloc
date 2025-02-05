@@ -44,7 +44,7 @@ class BodyCardWidget extends StatelessWidget {
           ),
           child: TextWidget(
             txtVal: cardSubTitle,
-            textStyle: txtTheme.labelMedium,
+            textStyle: txtTheme.titleMedium,
           ),
         ),
 
@@ -59,8 +59,8 @@ class BodyCardWidget extends StatelessWidget {
             child: SingleChildScrollView(
               child: TextWidget(
                 txtVal: cardDescription,
-                textStyle: txtTheme.labelSmall,
-                maxLines: 5,
+                textStyle: txtTheme.labelMedium,
+                maxLines: 4,
               ),
             ),
           ),
