@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/theme_constants/ui_constants/colors.dart';
 import 'card_widgets/body_card_widget.dart';
 import 'card_widgets/leading_card_widget.dart';
 
@@ -34,11 +33,6 @@ class RecommendedAnimeItemWidget extends StatelessWidget {
 
         /// custom card widget for replicating list tile
         child: Card(
-          elevation: 1.5,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12.0),
-          ),
-          color: AppColors.whiteColor.withValues(alpha: 0.9),
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Row(
