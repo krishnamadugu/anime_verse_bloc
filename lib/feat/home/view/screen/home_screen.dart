@@ -1,3 +1,4 @@
+import 'package:anime_verse/core/constants/app_constants/ui_constants/text_values.dart';
 import 'package:anime_verse/feat/home/view_model/anime_suggestion_view_model/anime_suggestion_bloc.dart';
 import 'package:anime_verse/feat/home/view_model/genre_view_model/genre_bloc.dart';
 import 'package:anime_verse/feat/home/view_model/top_rated_view_model/top_rated_bloc.dart';
@@ -20,7 +21,7 @@ class HomeScreen extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
     final TextTheme txtTheme = Theme.of(context).textTheme;
     final BoxConstraints defaultConstraints = BoxConstraints(
-      maxHeight: screenSize.height * 0.28,
+      maxHeight: screenSize.height * 0.3,
       maxWidth: screenSize.width * 0.8,
     );
     final BoxConstraints appBarDefConstraints = BoxConstraints(
@@ -36,6 +37,7 @@ class HomeScreen extends StatelessWidget {
                 appBar: buildAppBarWidget(
                   appBarDefConstraints,
                   txtTheme,
+                  AppTexts.kHomeAppBarTitle,
                 ),
                 body: ListView(
                   padding: EdgeInsets.symmetric(
